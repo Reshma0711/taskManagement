@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 module.exports = {
-  'migrations-path': 'src/migrations',
+     'migrations-path': 'src/migrations',
 };

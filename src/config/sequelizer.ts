@@ -1,14 +1,15 @@
-import { Sequelize } from "sequelize";
+import "reflect-metadata";
+import { Sequelize } from "sequelize-typescript";
 import { env } from "./env.config";
 
-export const sequelize = new Sequelize(
-  process.env.DB_NAME!,
-  process.env.DB_USER!,
-  process.env.DB_PASSWORD!,
-  {
-    host: process.env.DB_HOST || "localhost",
-    port: Number(process.env.DB_PORT) || 5432,
-    dialect: "postgres",
-    logging: false,
-  }
-);
+const sequelize = new Sequelize({
+  database: env.database.name,
+  username: env.database.user,
+  password: env.database.password,
+  host: env.database.host,
+  port: env.database.port,
+  dialect: "postgres",
+  logging: false,
+});
+
+export default sequelize;

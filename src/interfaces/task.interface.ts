@@ -20,7 +20,7 @@ export interface IUpdateTaskRequest {
 export interface ITaskResponseData {
   task: {
     id: number;
-    title: string;
+    title: string | null;
     description: string | null;
     status: TaskStatus;
     dueDate: Date | null;
