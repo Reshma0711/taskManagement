@@ -1,0 +1,305 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "REST API",
+    "description": ""
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/tasks/": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "openapi": {
+      "type": "string",
+      "example": "3.0.3"
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Task Management API"
+        },
+        "version": {
+          "type": "string",
+          "example": "1.0.0"
+        },
+        "description": {
+          "type": "string",
+          "example": "API documentation for registration, authentication, users, and roles."
+        }
+      }
+    },
+    "servers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "example": "http://localhost:5000/api"
+          },
+          "description": {
+            "type": "string",
+            "example": "Configured API server"
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "object",
+      "properties": {
+        "securitySchemes": {
+          "type": "object",
+          "properties": {
+            "bearerAuth": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "http"
+                },
+                "scheme": {
+                  "type": "string",
+                  "example": "bearer"
+                },
+                "bearerFormat": {
+                  "type": "string",
+                  "example": "JWT"
+                }
+              }
+            }
+          }
+        },
+        "schemas": {
+          "type": "object",
+          "properties": {
+            "ApiSuccess": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "success"
+                        }
+                      }
+                    },
+                    "success": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "object"
+                        },
+                        "additionalProperties": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "status",
+                    "success",
+                    "message",
+                    "data"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "ApiFailure": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "example": {
+                          "type": "string",
+                          "example": "failed"
+                        }
+                      }
+                    },
+                    "success": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "boolean"
+                        },
+                        "example": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "object"
+                        },
+                        "additionalProperties": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "status",
+                    "success",
+                    "errors",
+                    "message"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "apis": [
+    "src/swagger/*.ts"
+  ]
+}

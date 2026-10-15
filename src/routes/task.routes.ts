@@ -10,16 +10,14 @@ import {
 const router = Router();
 const taskController = new TaskController();
 
-router
-  .route("/")
-  .post(validateCreateTask, taskController.createTask)
-  .get(validateGetTasks, taskController.getAllTasks);
+router.post("/", validateCreateTask, taskController.createTask);
 
-router
-  .route("/:id")
-  .get(validateTaskId, taskController.getTaskById)
-  .put(validateTaskId,validateUpdateTask, taskController.updateTask
- )
-  .delete(validateTaskId, taskController.deleteTask)
+router.get("/", validateGetTasks, taskController.getAllTasks);
+
+router.get("/:id", validateTaskId, taskController.getTaskById);
+
+router.put("/:id", validateTaskId, validateUpdateTask, taskController.updateTask);
+
+router.delete("/:id", validateTaskId, taskController.deleteTask);
 
 export default router;

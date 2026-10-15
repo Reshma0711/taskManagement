@@ -4,6 +4,7 @@ import type { Express } from "express";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { env } from "./env.config";
+import swaggerAutogen from "swagger-autogen";
 
 const sourceSwaggerDocs = path.resolve(process.cwd(), "src/swagger");
 const compiledSwaggerDocs = path.resolve(process.cwd(), "dist/swagger");
@@ -11,6 +12,7 @@ const swaggerDocs = (existsSync(sourceSwaggerDocs)
   ? path.join(sourceSwaggerDocs, "*.ts")
   : path.join(compiledSwaggerDocs, "*.js")
 ).replace(/\\/g, "/");
+
 
 const swaggerOptions: swaggerJSDoc.Options = {
   definition: {
@@ -22,10 +24,9 @@ const swaggerOptions: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: env.apiBaseUrl || `http://localhost:${env.port}/api`,
+        url: `${env.apiBaseUrl}/api`||`http://localhost:${env.port}/api`,
         description: env.apiBaseUrl ? "Configured API server" : "Local development server",
       },
-      
     ],
     components: {
       securitySchemes: {
@@ -59,10 +60,16 @@ const swaggerOptions: swaggerJSDoc.Options = {
       },
     },
   },
-  apis: [swaggerDocs],
+  apis: ["src/swagger/*.ts"],
 };
 
 export const swaggerSpec = swaggerJSDoc(swaggerOptions);
+const outputFile="./swagger-output.json";
+const endpointsFiles=["./src/routes/index.ts"];
+
+swaggerAutogen(outputFile, endpointsFiles, swaggerOptions)
+
+
 
 export function setupSwagger(app: Express): void {
   app.get("/api-docs.json", (_req, res) => {
@@ -71,4 +78,6 @@ export function setupSwagger(app: Express): void {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   console.log(`Serving Swagger API documentation at ${env.apiBaseUrl}/api-docs`);
 }
+
+
 
