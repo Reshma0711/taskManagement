@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "0028",
-    "database": "postgres",
+    "database": "task_management",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
@@ -10,7 +10,7 @@
   "test": {
     "username": "postgres",
     "password": "0028",
-    "database": "postgres",
+    "database": "task_management",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
@@ -18,7 +18,7 @@
   "production": {
     "username": "postgres",
     "password": "0028",
-    "database": "postgres",
+    "database": "task_management",
     "host": "localhost",
     "port": 5432,
     "dialect": "postgres"

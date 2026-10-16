@@ -46,6 +46,24 @@ class Task extends Model {
     allowNull: true,
   })
   declare dueDate: Date | null;
+
+ @Column({
+  type: DataType.INTEGER,
+  allowNull: true,
+})
+declare assignedTo: number | null;
+
+@Column({
+  type: DataType.INTEGER,
+  allowNull: true,
+})
+declare assignedByAdmin: number | null;
+
+@Column({
+    type: DataType.DATE,
+    allowNull: true,
+})
+declare assignedOn: Date | null;
 }
 
 export default Task;

@@ -14,7 +14,6 @@ setupSwagger(app);
 async function startServer() {
   try {
     await sequelize.authenticate();
-    await sequelize.sync();
 
     console.log("PostgreSQL connected");
 

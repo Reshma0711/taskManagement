@@ -57,8 +57,6 @@ export function sendServerError(
   return sendFailure(res, 500, "something went wrong", errors);
 }
 
-
-
 export function formatTask(task: Task): ITaskResponseData["task"] {
   return {
     id: task.id,

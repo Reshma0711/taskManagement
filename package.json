@@ -19,7 +19,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:migrate": "sequelize-cli db:migrate --config config/config.js",
+    "db:migrate": "sequelize-cli db:migrate --config config/config.json --env development",
     "swagger-autogen": "node ./swagger.config.ts",
      "generate:openapi-comments": "node scripts/generate-openapi-comments.cjs"
   },
